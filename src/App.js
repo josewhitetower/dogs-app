@@ -1,12 +1,26 @@
-import React from 'react';
-
-import dogs from './dogs';
-import NavBar from './components/NavBar'
+import React from "react";
+import { Route, Switch } from "react-router";
+import dogs from "./dogs";
+import NavBar from "./components/NavBar";
+import Dog from "./components/Dog";
+import DogList from "./components/DogList";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar dogs={dogs}/>
+    <div className="App bg-blue-100 h-screen">
+      <NavBar dogs={dogs} />
+      <Switch>
+        <Route
+          exact
+          path="/dogs/:name"
+          render={routeProps => <Dog {...routeProps} />}
+        />
+        <Route
+          exact
+          path="/"
+          render={routeProps => <DogList {...routeProps} dogs={dogs} />}
+        />
+      </Switch>
     </div>
   );
 }

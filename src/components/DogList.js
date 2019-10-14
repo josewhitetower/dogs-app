@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function DogList(props) {
   const dogslist = props.dogs.map(d => (
     <Link to={`/dogs/${d.src}`}>
-      <div key={d.name} className="mb-10 cursor-pointer">
+      <div key={d.name} className="DogItem mb-10 cursor-pointer">
         <img
           src={require(`./../img/${d.src}.jpg`)}
           alt={d.name}

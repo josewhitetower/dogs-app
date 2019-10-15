@@ -1,7 +1,12 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 export default function Dog(props) {
   const { dog } = props;
+
+  if (!dog) {
+    return <Redirect to="/dogs"/>
+  }
 
   const facts = dog.facts.map((fact, index) => {
     return (
@@ -25,7 +30,7 @@ export default function Dog(props) {
         />
         <div className="px-2 mt-2">
           <h2 className="text-xl font-semibold">{dog.name}</h2>
-          <p className="text-gray-600 text-sm mb-6">{`${dog.age} years old`}</p>
+          <h4 className="text-gray-600 text-sm mb-6">{`${dog.age} years old`}</h4>
           <ul className="border-b">{facts}</ul>
         </div>
         <button

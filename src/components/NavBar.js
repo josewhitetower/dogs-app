@@ -16,7 +16,6 @@ class NavBar extends Component {
 
   render() {
     const items =
-      this.props.dogs &&
       this.props.dogs.map(dog => (
         <NavLink
           to={`/dogs/${dog.src}`}
@@ -38,13 +37,13 @@ class NavBar extends Component {
           </NavLink>
           <ul className="ml-4 text-white hidden md:flex lg:flex">{items}</ul>
           <span
-            className="text-white ml-auto md:hidden lg:hidden"
+            className="text-white ml-auto border rounded px-2 w-8 md:hidden lg:hidden"
             onClick={this.handleClick}
           >
             <i
               className={`fa ${
                 this.state.isNavBarOpen ? "fa-times" : "fa-bars"
-              } fa-2x`}
+              }`}
               aria-hidden="true"
             ></i>
           </span>

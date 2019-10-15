@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect } from "react-router-dom";
 import dogs from "./dogs";
 import NavBar from "./components/NavBar";
 import Dog from "./components/Dog";
@@ -12,6 +12,11 @@ function App() {
       <Switch>
         <Route
           exact
+          path="/dogs"
+          render={routeProps => <DogList {...routeProps} dogs={dogs} />}
+        />
+        <Route
+          exact
           path="/dogs/:name"
           render={routeProps => (
             <Dog
@@ -20,11 +25,7 @@ function App() {
             />
           )}
         />
-        <Route
-          exact
-          path="/"
-          render={routeProps => <DogList {...routeProps} dogs={dogs} />}
-        />
+        <Redirect to="/dogs"/>
       </Switch>
     </div>
   );
